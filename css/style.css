@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    column-gap: 3px;
+}
+
+.container__half {
+    padding: 0.5rem 0.5rem;
+    flex: 1;    
+    position: relative;
+}
+
+.half-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.divider {
+    border-left: 1px solid #ccc;
+    height: 95%;
+    position: absolute;
+    left: 50%;
+    margin-top: 20px;
+    margin-left: -3px;
+    top: 0;
+}
+
+header {
+    background-color: #f5f5f5;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 10px #ccc;
+}
+
+.cards-categories {
+    display: flex;
+    font-size: 0.6rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    /* Put a card in the next row when previous cards take all width */
+    flex-wrap: wrap;
+    margin-right: -8px;
+    row-gap: 0.25rem;
+
+}
+
+.cards-categories__item {
+    /* There will be 4 cards per row */
+    flex-basis: 15%;
+    box-shadow:  0 0 10px #000;
+    color: #f5f5f5;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 5px;
+    background-color: rgb(101, 98, 238);
+    margin : 0.1rem 0.25rem;
+
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+
+    cursor: pointer;
+
+}
+
+.animated {
+    position: absolute;
+    top: 200px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #2011f3;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.cards-effects {
+    display: flex;
+    font-size: 0.6rem;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(248, 246, 246);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    /* Put a card in the next row when previous cards take all width */
+    flex-wrap: wrap;
+    margin-right: -8px;
+    row-gap: 0.25rem;
+
+}
