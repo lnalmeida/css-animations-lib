@@ -1,8 +1,8 @@
-let categories = [
-    'MAGIC EFFECTS',
+const categories = [
+    'MAGIC',
     'BLING',
-    'STATIC EFFECTS',
-    'S EFFECTS OUT',
+    'STATIC',
+    'STATIC OUT',
     'PERSPECTIVE',
     'ROTATE',
     'SLIDE',
@@ -13,21 +13,191 @@ let categories = [
     'ON THE SPACE'
 ]
 
-let labelsCategories = document.querySelectorAll('.cards-categories__item');
-let animationTitle = document.querySelector('h1[name="animation_title"]');
+const magicEffectsArray = [
+    'magic',
+    'twisterInDown',
+    'twisterInUp',
+    'swap'
+]
 
+const blingEffectsArray = [
+    'puffIn',   
+    'puffOut',  
+    'vanishIn', 
+    'vanishOut'
+]
 
-labelsCategories.forEach(function(label, index) {
-    label.innerHTML = categories[index];
+const staticEffectsArray = [
+    'openDownLeft',
+    'openDownRight',
+    'openUpLeft',
+    'openUpRight',
+    'openDownLeftReturn',
+    'openDownRightReturn',
+    'openUpLeftReturn',
+    'openUpRightReturn'
+]
+
+const staticEffectsOutArray =[
+    'openDownLeftOut',
+    'openDownRightOut',
+    'openUpLeftOut',
+    'openUpRightOut'
+]
+
+const perspectiveEffectsArray = [
+    'perspectiveDown',
+    'perspectiveUp',
+    'perspectiveLeft',
+    'perspectiveRight',
+    'perspectiveDownReturn',
+    'perspectiveUpReturn',
+    'perspectiveLeftReturn',
+    'perspectiveRightReturn'
+]
+
+const rotateEffectsArray = [
+    'rotateDown',
+    'rotateUp',
+    'rotateLeft',
+    'rotateRight'
+]
+
+const slideEffectsArray = [
+    'slideDown',
+    'slideUp',
+    'slideLeft',
+    'slideRight',
+    'slideDownReturn',
+    'slideUpReturn',
+    'slideLeftReturn',
+    'slideRightReturn'
+]
+
+const mathEffectsArray = [
+    'swashOut',
+    'swashIn',
+    'foolishIn',
+    'holeOut'
+]
+
+const tinEffectsArray = [
+    'tinRightOut',
+    'tinLeftOut',
+    'tinUpOut',
+    'tinDownOut',
+    'tinRightIn',
+    'tinLeftIn',
+    'tinUpIn',
+    'tinDownIn'
+]
+
+const bombEffectsArray = [
+    'bombRightOut',
+    'bombLeftOut'
+]
+
+const boingEffectsArray = [
+    'boingInUp',
+    'boingOutDown'
+]
+
+const onTheSpaceEffectsArray = [
+    'spaceOutUp',
+    'spaceOutRight',
+    'spaceOutDown',
+    'spaceOutLeft',
+    'spaceInUp',
+    'spaceInRight',
+    'spaceInDown',
+    'spaceInLeft'
+]
+
+const allEffects = [
+    magicEffectsArray,
+    blingEffectsArray,
+    staticEffectsArray,
+    staticEffectsOutArray,
+    perspectiveEffectsArray,
+    rotateEffectsArray,
+    slideEffectsArray,
+    mathEffectsArray,
+    tinEffectsArray,
+    bombEffectsArray,
+    boingEffectsArray,
+    onTheSpaceEffectsArray
+]
+
+const cardsEffects = document.querySelector('.cards-effects');
+const labelsEffects = document.querySelectorAll('.cards-effects__item');
+const labelsCategories = document.querySelectorAll('.cards-categories__item');
+const animationTitle = document.querySelector('h1[name="animation_title"]');
+
+var selectedCategory = 0;
+var selectedEffect = 0;
+
+labelsCategories.forEach(function(labelCategory, index) {
+    labelCategory.innerHTML = categories[index];
 })
 
-labelsCategories.forEach(function(label, index) {
-    label.addEventListener('click', function() {
-        animationTitle.textContent = label.textContent;
+
+labelsCategories.forEach(function(labelCategory, index) {
+    labelCategory.addEventListener('click', function() {
+        selectedCategory = index;
+        animationTitle.textContent = labelCategory.textContent;
+        allEffects.forEach((effect, index) => {
+            if (index === selectedCategory) {
+                cardsEffects.innerHTML = '';
+                effect.forEach(effect => {
+                    cardsEffects.appendChild(createDOMCardsEffects(allEffects[selectedCategory][index]));
+                })
+                
+            } 
+        })
     })
 })
 
-console.log(categories);
+// function selectCategory(){
+//     var selectedCategory = 0;
+//     labelsCategories.forEach(function(labelCategory, index) {
+//         labelCategory.addEventListener('click', function() {
+//             selectedCategory = index;
+//             animationTitle.textContent = labelCategory.textContent;
+//             allEffects.forEach((effect, index) => {
+//                 cardsEffects.appendChild(createDOMCardsEffects(allEffects[selectedCategory()][index]));
+//             })
+//         })
+//     })
+//     return selectedCategory;
+// }
+
+
+labelsEffects.forEach(function(labelEffect, index) {
+    labelEffect.textContent = allEffects[selectedCategory][index];
+})
+
+
+
+
+
+function createDOMCardsEffects(effect) {
+    let card = document.createElement('div');
+    let cardContent = document.createElement('a');
+    card.appendChild(cardContent);
+    cardContent.innerText = effect;
+    card.classList.add('cards-effects__item');
+    return card;
+}
+
+
+// allEffects.forEach((effect, index) => {
+//     cardsEffects.appendChild(createDOMCardsEffects(allEffects[selectCategory()][index]));
+// })
+
+
+
+
+
 
 
 /*
